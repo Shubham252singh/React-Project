@@ -1,0 +1,23 @@
+{
+  "name": "practisefolder",
+  "version": "1.0.0",
+  "description": "Learning React",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "fast"
+  },
+  "author": "Shubham Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.15.0"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "browser-list": [
+    "last 2 version"
+  ]
+}
