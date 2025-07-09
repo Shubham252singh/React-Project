@@ -31,7 +31,7 @@ class User extends React.Component{
     render(){
         const {name ,location,email}=this.state.userInfo;
         return (
-            <div className = "UserInfoCart">
+            <div className = "m-2 border-2 p-2">
                 <h3>Name: {name}</h3>
                 <h4>Location: {location}</h4>
                 <h4>Email: {email!=null?email:"Not Present"}</h4>

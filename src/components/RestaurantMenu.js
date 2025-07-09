@@ -12,23 +12,23 @@ const RestaurantMenu=()=>{
     const {name,avgRating,cuisines,sla,costForTwoMessage,totalRatingsString}=menuDtls[2]?.card?.card?.info;
     const {offers}=menuDtls[3]?.card?.card?.gridElements?.infoWithStyle;
     const itemCards =menuDtls[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card.itemCards || menuDtls[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards;
-    return (<div>
-        <h1>{name}</h1>
-        <div className ="restDtls">
-            <h3>⭐️ {avgRating} {"("+totalRatingsString+")"} {costForTwoMessage}</h3>
-            <h3>{cuisines.join(",")}</h3>
-            <h3>{sla.minDeliveryTime+" - "+sla.maxDeliveryTime} mins</h3>
+    return (<div className="ml-2 p-2">
+        <h1 className="text-4xl m-4 font-semibold">{name}</h1>
+        <div className ="border-2 border-amber-100 shadow-xl h-34 p-3 mb-6 rounded-3xl">
+            <h3 className="m-2">⭐️ {avgRating} {"("+totalRatingsString+")"} {costForTwoMessage}</h3>
+            <h3 className="m-2">{cuisines.join(",")}</h3>
+            <h3 className="m-2">{sla.minDeliveryTime+" - "+sla.maxDeliveryTime} mins</h3>
         </div>
-        <h2>Deals for you</h2>
-        <div className ="resOffer">
+        <h2 className="my-4 mx-2 text-xl">Deals for you:</h2>
+        <div className ="flex flex-wrap justify-between">
             {offers.map((obj)=>(
-                <div className = "offerItem" key={obj.info.offerIds[0]}>
+                <div className = "border-2 w-50 h-20 p-3 text-center bg-amber-50 rounded-3xl" key={obj.info.offerIds[0]}>
                 <h3>{obj.info.header}</h3>
                 <h3>{obj.info.couponCode || obj.info.description}</h3>
                 </div>))}
         </div>
-        <div className="recommendItem">
-            <h3>Recommended {"("+ itemCards.length +")"}</h3>
+        <div className="my-4 mx-2">
+            <h3 className ="text- my-4">Recommended {"("+ itemCards.length +")"}</h3>
             <ItemDtls itemCards = {itemCards}/>
         </div>
     </div>);

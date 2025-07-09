@@ -25,15 +25,15 @@ const Body = ()=>{
     }
     return(
         <div className="body_Cont">
-            <div className="flex m-1">
+            <div className="flex m-4">
                 <input className ="m-2 px-4 border-2 border-solid  focus:border-blue-400 focus:outline-none focus:ring-0 " type="text" placeholder="Search Restaurants" value = {srchtxt} onChange={(e)=>{
                     setsrchtxt(e.target.value);
                 }}/>
-                <button className ="m-2 px-2 bg-blue-200 border-2 rounded-lg" onClick = {()=>{
+                <button className ="m-2 px-2 bg-blue-300 border-2 border-black rounded-lg text-amber-50" onClick = {()=>{
                     const fikter_resList= resList.filter((res)=>res.info.name.toLowerCase().includes(srchtxt.toLowerCase()));
                     setfilter_restaurant(fikter_resList)
                 }}>Search</button>
-                <button className ="m-2 px-2 bg-blue-200 border-2 rounded-lg" onClick = {()=>{
+                <button className ="m-2 px-2 bg-blue-300 border-2 rounded-lg  border-black text-amber-50" onClick = {()=>{
                     const testo= resList.filter((obj)=>obj.info.avgRating>4.3);
                     setfilter_restaurant(testo);
                 }}>Top Rated Restaurant Search</button>

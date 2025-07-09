@@ -7,7 +7,7 @@ const Header = ()=>{
     const onlineStatus = useInternetStatus();
     return (
         <div className="flex m-2 p-1 justify-between items-center h-20 bg-pink-100 shadow-2xl">
-            <div className="logoCont">
+            <div className=" bg-pink-100 p-2 rounded-md">
                 <img className ="w-24" src={LOGO_URL}></img>
             </div>
             <div className="navigaionCont">
