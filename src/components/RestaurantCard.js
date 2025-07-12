@@ -12,4 +12,15 @@ const Restaurant_card =(props)=>{
         <h6 className ="pt-1">{sla.deliveryTime} min</h6>   
     </div>
 )}
+
+export const withPromotedLabel = ()=>{
+    return (props)=>(
+        <div>
+            <label className ="absolute ml-2 p-1 text-white bg-black rounded-l-lg h-7">
+                Promoted
+            </label>
+            <Restaurant_card {...props} />
+        </div>
+    )
+}
 export default Restaurant_card;

@@ -1,4 +1,4 @@
-import Restaurant_card from "./RestaurantCard";
+import Restaurant_card, { withPromotedLabel } from "./RestaurantCard";
 import { useState , useEffect} from 'react';
 import{Link} from 'react-router-dom'
 import Shimmer from "./Shimmer";
@@ -8,11 +8,11 @@ const Body = ()=>{
     const [resList,setresList]=useState([]);
     const [filter_restaurant,setfilter_restaurant]=useState([]);
     const [srchtxt,setsrchtxt]=useState("");
+    const Restaurant_Card_Promoted = withPromotedLabel(<Restaurant_card/>)
     useEffect(()=>{fetchdata();},[]);
     const fetchdata = async ()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.34260&lng=85.30990&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await data.json();
-        //console.log(json);
         setresList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setfilter_restaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -39,7 +39,9 @@ const Body = ()=>{
                 }}>Top Rated Restaurant Search</button>
             </div>
             <div className="flex flex-wrap  justify-start gap-4">{
-                filter_restaurant.map((obj)=><Link key = {obj.info.id} to = {"/restaurant/"+ obj.info.id}><Restaurant_card resData = {obj.info} /></Link>)}
+                filter_restaurant.map((obj)=><Link key = {obj.info.id} to = {"/restaurant/"+ obj.info.id}>
+                       {obj.info.avgRating > 4.5?(<Restaurant_Card_Promoted resData = {obj.info} />):(<Restaurant_card resData = {obj.info}/>)}
+                    </Link>)}
             </div>
         </div>
     );
