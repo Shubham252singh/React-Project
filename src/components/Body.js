@@ -20,25 +20,25 @@ const Body = ()=>{
     if(onlineStatus == false){
         return <h1>Internet is Down🛜</h1>
     }
-    if(filter_restaurant.length ===0){
+    if(filter_restaurant.length === 0){
         return <Shimmer/>;    
     }
     return(
         <div className="body_Cont">
-            <div className="flex m-4">
+            <div className="flex m-4 justify-center">
                 <input className ="m-2 px-4 border-2 border-solid  focus:border-blue-400 focus:outline-none focus:ring-0 " type="text" placeholder="Search Restaurants" value = {srchtxt} onChange={(e)=>{
                     setsrchtxt(e.target.value);
                 }}/>
-                <button className ="m-2 px-2 bg-blue-300 border-2 border-black rounded-lg text-amber-50" onClick = {()=>{
+                <button className ="m-2 px-2 bg-blue-300 border-2 rounded-lg text-amber-50" onClick = {()=>{
                     const fikter_resList= resList.filter((res)=>res.info.name.toLowerCase().includes(srchtxt.toLowerCase()));
                     setfilter_restaurant(fikter_resList)
                 }}>Search</button>
-                <button className ="m-2 px-2 bg-blue-300 border-2 rounded-lg  border-black text-amber-50" onClick = {()=>{
+                <button className ="m-2 px-2 bg-blue-300 border-2 rounded-lg  text-amber-50" onClick = {()=>{
                     const testo= resList.filter((obj)=>obj.info.avgRating>4.3);
                     setfilter_restaurant(testo);
                 }}>Top Rated Restaurant Search</button>
             </div>
-            <div className="flex flex-wrap  justify-start gap-4">{
+            <div className="flex flex-wrap  justify-center gap-4">{
                 filter_restaurant.map((obj)=><Link key = {obj.info.id} to = {"/restaurant/"+ obj.info.id}>
                        {obj.info.avgRating > 4.5?(<Restaurant_Card_Promoted resData = {obj.info} />):(<Restaurant_card resData = {obj.info}/>)}
                     </Link>)}

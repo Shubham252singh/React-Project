@@ -9,11 +9,15 @@ export const ItemDetails=({detail})=>{
                 {ratings?.aggregatedRating?.rating && (
                     <h5 className="mt-1">⭐️ {ratings?.aggregatedRating?.rating}</h5>
                 )}
-                <p className="mt-1">{description}</p>
+                <p className="mt-1 text-xs">{description}</p>
             </div> 
-             <div className="flex items-center">
-                <img className="rounded-xl h-32 min-w-45 " alt="item image" src={ITEM_URL + imageId}></img>
-            </div> 
+            <div className="relative flex justify-center items-end my-2 w-45 min-w-45 h-32">
+                <img className="rounded-xl w-full h-full object-cover" alt="item image" src={ITEM_URL + imageId} />
+                <button className="absolute rounded-lg font-bold bg-white text-red-300 w-24 border">
+                    ADD +
+                </button>
+            </div>
+
         </div>
     )
 }
