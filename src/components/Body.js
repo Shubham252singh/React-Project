@@ -1,14 +1,16 @@
 import Restaurant_card, { withPromotedLabel } from "./RestaurantCard";
-import { useState , useEffect} from 'react';
+import { useState , useEffect , useContext} from 'react';
 import{Link} from 'react-router-dom'
 import Shimmer from "./Shimmer";
 import useInternetStatus from "../utils/useInternetStaus";
+import UserContext from "../utils/UserContext";
 
 const Body = ()=>{
     const [resList,setresList]=useState([]);
     const [filter_restaurant,setfilter_restaurant]=useState([]);
     const [srchtxt,setsrchtxt]=useState("");
     const Restaurant_Card_Promoted = withPromotedLabel(<Restaurant_card/>)
+    const {login_name,setUserName}=useContext(UserContext);
     useEffect(()=>{fetchdata();},[]);
     const fetchdata = async ()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.34260&lng=85.30990&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
@@ -37,6 +39,10 @@ const Body = ()=>{
                     const testo= resList.filter((obj)=>obj.info.avgRating>4.3);
                     setfilter_restaurant(testo);
                 }}>Top Rated Restaurant Search</button>
+                <label className ="m-2 px-2"> User Logged: </label>
+                <input className ="m-2 border-2 border-black px-2" value ={login_name} onChange={(e)=>{
+                    setUserName(e.target.value);
+                }}/>
             </div>
             <div className="flex flex-wrap  justify-center gap-4">{
                 filter_restaurant.map((obj)=><Link key = {obj.info.id} to = {"/restaurant/"+ obj.info.id}>
