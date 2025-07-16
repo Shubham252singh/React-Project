@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import useInternetStatus from "../utils/useInternetStaus";
 import {useContext} from "react"
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+
 const Header = ()=>{
     const [loginbutton , setlogin]=useState("Login");
     const onlineStatus = useInternetStatus();
     const {login_name} = useContext(UserContext);
+    const cartItems =useSelector((store)=>store.cart.items);
+    console.log(cartItems);
+
     return (
         <div className="flex m-2 p-1 justify-between items-center h-20 bg-pink-100 shadow-2xl">
             <div className=" bg-pink-100 p-2 rounded-md">
@@ -20,7 +25,7 @@ const Header = ()=>{
                     <li className ="px-6 hover:font-semibold"><Link to = "/about">About</Link></li>
                     <li className ="px-6 hover:font-semibold"><Link to = "/contact">Contact</Link></li>
                     <li className ="px-6 hover:font-semibold"><Link to = "/grocery">Grocery</Link></li>
-                    <li className ="px-6 hover:font-semibold">Cart</li>
+                    <li className ="px-6 hover:font-semibold"><Link to = "/cart">Cart {cartItems.length > 0 && <span className = " bg-green-400 text-white px-1 py-0.5 text-sm">{cartItems.length}</span>}</Link></li>
                     <li className ="px-6 hover:font-semibold"><button className="loginbtn" onClick = {()=>{
                         if(loginbutton =="Login"){
                             setlogin("Logout");
