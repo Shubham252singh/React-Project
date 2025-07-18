@@ -11,8 +11,7 @@ const Header = ()=>{
     const onlineStatus = useInternetStatus();
     const {login_name} = useContext(UserContext);
     const cartItems =useSelector((store)=>store.cart.items);
-    console.log(cartItems);
-
+    
     return (
         <div className="flex m-2 p-1 justify-between items-center h-20 bg-pink-100 shadow-2xl">
             <div className=" bg-pink-100 p-2 rounded-md">

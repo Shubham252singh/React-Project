@@ -5,11 +5,20 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "fast"
+    "test": "jest"
   },
   "author": "Shubham Singh",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "babel-jest": "^30.0.4",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
     "parcel": "^2.15.0"
   },
   "dependencies": {
