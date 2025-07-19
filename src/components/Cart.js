@@ -34,7 +34,7 @@ const Cart = () => {
                     onClick={handleClearCart}> Clear Cart</button>
             </div>
             <div>
-                {cartitems.map((obj) => <ItemDetails key={obj?.card?.info?.id} detail={obj} />)}
+                {cartitems.map((obj) => <ItemDetails key={obj?.card?.info?.id} detail={obj} data-testid ="cartItemTest"/>)}
             </div>
         </div>
     );

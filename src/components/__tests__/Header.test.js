@@ -34,17 +34,19 @@ describe("Test Cases for Header Component",()=>{
         const LogoutButton = screen.getByRole("button",{name:"Logout"});
         expect(LogoutButton).toBeInTheDocument();
     })
-
-    it("Should render Cart in Header Component",()=>{
+    
+    it("Should change back to Login button on double click", () => {
         render(
             <BrowserRouter>
-                <Provider store ={appStore}>
-                    <Header/>
+                <Provider store={appStore}>
+                    <Header />
                 </Provider>
-            </BrowserRouter> 
+            </BrowserRouter>
         )
-
-        const cart = screen.getByText(/Cart/);
-        expect(cart).toBeInTheDocument();
+        const loginbutton = screen.getByRole("button", { name: "Login" })
+        fireEvent.click(loginbutton);
+        fireEvent.click(loginbutton);
+        const loginBtnAfterDoubleClick = screen.getByRole("button", { name: "Login" });
+        expect(loginBtnAfterDoubleClick).toBeInTheDocument()
     })
 })

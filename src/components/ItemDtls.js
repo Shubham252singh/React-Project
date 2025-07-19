@@ -1,14 +1,14 @@
 import { ITEM_URL } from "../utils/Constant";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartRedux";
-export const ItemDetails=({detail})=>{
+export const ItemDetails=({detail,...props})=>{
     const {name,price,defaultPrice,ratings,description,imageId}=detail?.card?.info;
     const dispatch =useDispatch();
     const handleAddItem=(detail)=>{
         dispatch(addItem(detail));
     }
     return (
-        <div className ="border-b-2 border-amber-200 flex justify-between min-h-36">
+        <div className ="border-b-2 border-amber-200 flex justify-between min-h-36 " data-testid = {props['data-testid']}>
             <div className ="py-2 px-6">
                 <h4 className ="text-lg">{name}</h4>
                 <h5>₹ {price?price/100:defaultPrice/100}</h5>

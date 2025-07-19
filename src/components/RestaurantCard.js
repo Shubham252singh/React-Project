@@ -3,7 +3,7 @@ const Restaurant_card =(props)=>{
     const {resData}=props;
     const {name,costForTwo,cuisines,avgRating,cloudinaryImageId,sla}=resData;
     return(
-    <div className = "m-6 overflow-hidden w-60 text-center bg-gray-100 h-100 hover:shadow-2xl hover:bg-gray-200">
+    <div className = "m-6 overflow-hidden w-60 text-center bg-gray-100 h-100 hover:shadow-2xl hover:bg-gray-200" data-testid = "test-restaurant">
         <img className ="w-60 h-44 rounded-lg"alt ="item image"src={ITEM_URL+cloudinaryImageId}></img>
         <h3 className ="pt-1 font-bold">{name}</h3>
         <h5 className ="pt-1">Cusine - {cuisines.join(", ")}</h5>
